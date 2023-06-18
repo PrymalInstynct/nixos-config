@@ -22,6 +22,7 @@
     isNormalUser = true;
     extraGroups = [ "wheel" "video" "audio" "camera" "networkmanager" "lp" "scanner" "kvm" "libvirtd" "plex" ];
     shell = pkgs.zsh;                       # Default shell
+    initialPassword = "password";
   };
   security.sudo.wheelNeedsPassword = false; # User does not need to give password when using sudo.
 

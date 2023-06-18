@@ -58,7 +58,6 @@
   environment = {                               # Packages installed system wide
     systemPackages = with pkgs; [               # This is because some options need to be configured.
       discord
-      #plex
       x11vnc
     ];
     #variables = {
