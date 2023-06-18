@@ -95,7 +95,7 @@ This will depend on the host chosen.
 #+begin_src
   # nixos-generate-config --root /mnt
   # nix-env -iA nixos.git
-  # git clone https://github.com/matthiasbenaets/nixos-config /mnt/etc/nixos/<name>
+  # git clone https://github.com/PrymalInstynct/nixos-config /mnt/etc/nixos/<name>
 
   Optional if you are not me
   # cp /mnt/etc/nixos/hardware-configuration.nix /mnt/etc/nixos/nixos-config/hosts/<host>/.
