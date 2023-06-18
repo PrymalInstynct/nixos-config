@@ -64,37 +64,15 @@ This will depend on the host chosen.
   - Home = "nixos"
 - Partition Size:
   - Boot = 512MiB
-  - Swap = 8GiB
   - Home = Rest
-- No Swap: Ignore line 3 & 7
 
 #+begin_src
   # parted /dev/sda -- mklabel gpt
-  # parted /dev/sda -- mkpart primary 512MiB -8GiB
-  # parted /dev/sda -- mkpart primary linux-swap -8GiB 100%
+  # parted /dev/sda -- mkpart primary 512MiB 100%
   # parted /dev/sda -- mkpart ESP fat32 1MiB 512MiB
-  # parted /dev/sda -- set 3 esp
+  # parted /dev/sda -- set 2 esp
   # mkfs.ext4 -L nixos /dev/sda1
-  # mkswap -L /dev/sda2
-  # mkfs.fat -F 32 -n boot /dev/sda3
-#+end_src
-
-*** Legacy
-*In these commands*
-- Partition Label:
-  - Home & Boot = "nixos"
-  - Swap = "swap"
-- Partition Size:
-  - Swap = 8GiB
-  - Home = Rest
-- No swap: Ignore line 3 and 5
-
-#+begin_src
-  # parted /dev/sda -- mklabel msdos
-  # parted /dev/sda -- mkpart primary 1MiB -8GiB
-  # parted /dev/sda -- mkpart primary linux-swap -8GiB 100%
-  # mkfs.ext4 -L nixos /dev/sda1
-  # mkswap -L /dev/sda2
+  # mkfs.fat -F 32 -n boot /dev/sda2
 #+end_src
 
 ** Installation
@@ -109,32 +87,12 @@ This will depend on the host chosen.
   # mount /dev/disk/by-label/boot /mnt/boot
 #+end_src
 
-*** Legacy
-#+begin_src
-  # mount /dev/disk/by-label/nixos /mnt
-#+end_src
-
-*** Mounting Extras
-*In these commands*
-  - ~/mnt/ssd~
-- Label of storage:
-  - ssd2
-- If storage has no label:
-  - ~mount /dev/disk/by-uuid/ssd2 /mnt/ssd~
-#+begin_src
-  # mkdir -p /mnt/ssd
-  # mount /dev/disk/by-label/ssd2 /mnt/ssd
-#+end_src
-
 *** Generate
 *In these commands*
-- Swap is enable:
-  - Ignore if no swap or enough RAM
 - Configuration files are generated @ ~/mnt/etc/nixos~
   - If you are me, you don't need to do this. Hardware-configuration.nix already in flake.
 - Clone repository
 #+begin_src
-  # swapon /dev/sda2
   # nixos-generate-config --root /mnt
   # nix-env -iA nixos.git
   # git clone https://github.com/matthiasbenaets/nixos-config /mnt/etc/nixos/<name>
