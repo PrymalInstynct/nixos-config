@@ -106,6 +106,10 @@ This will depend on the host chosen.
    - This is because userActivationScript is used for this setup and this will time out during the rebuild.
    - It will automatically install if ~$HOME/.emacs.d~ does not exist
      - If this dir already exist, move or delete it.
+2. Set up Git global configurations
+   - ~$ git config --global user.email "<email>"~
+   - ~$ git config --global user.name "<name>~
+3. Copy ssh keys to host
 
 *** Install
 *In these commands*
