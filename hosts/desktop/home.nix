@@ -24,28 +24,8 @@
       # Applications
       ansible           # Automation
       sshpass           # Ansible Dependency
-      #handbrake         # Encoder
-      hugo              # Static Website Builder
-      mkvtoolnix        # Matroska Tools
       plex-media-player # Media Player
-
-      # Dependencies
-      gmtp              # Used for mounting gopro
-      ispell            # Emacs spelling
-      
-      # Imported in default or from modules
-      #discord          # Comms           # See overlay default.nix
-      #ffmpeg           # Video Support
-      #gphoto2          # Digital Photography
-      #steam            # Game Launcher
-
-      # Packages I used in the past
-      #darktable        # Raw Image Processing
-      #gimp             # Graphical Editor
-      #inkscape         # Vector Graphical Editor
-      #kdenlive         # Video Editor
-      #libreoffice      # Office Packages
-      #shotcut          # Video Editor
+      vscode            # Visual Studio Code
     ];
   };
 
